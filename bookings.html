@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <title>INDEX </title>
+        <link rel="stylesheet" href="STYLE.css">
+        <script defer src="bookingsScript.js"></script>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+       
+    </head>
+   <body class="register">
+    <header class="navigation">
+        <div class="nav-container">
+          <div class="brand">
+            <img src="LOGO.png" alt="">
+          </div>
+          <nav>
+            <div class="nav-mobile">
+              <i class="bx bx-menu"></i>
+              </div>
+            <ul class="nav-list">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="#!">About</a>
+                <ul class="nav-dropdown">
+                  <li>
+                    <a href="about.html">About VPs</a>
+                  </li>
+                  <li>
+                    <a href="Team.html">Meet the team</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="services.html">Services</a>
+              </li>
+              <li>
+                <a href="#!">Events</a>
+                <ul class="nav-dropdown">
+                  <li>
+                    <a href="Events.html">Our Events</a>
+                  </li>
+                  <li>
+                    <a href="Versatile Snake/index.html">Our Game</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="contact.html">Contact</a>
+              </li>
+              <div class="mobile-close"><i class='bx bx-x'></i></div>
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <div class="container" >
+            
+            <form id="book" action="">
+                <h1>Booking</h1>
+                <div class="input-control">
+                    <label for="fullname">Full Name</label>
+                    <input id="fullname" name="fullname" type="text">
+                    <div class="error"></div>
+                </div>
+                
+                <div class="input-control">
+                    <label for="address">Residential Address</label>
+                    <input id="address" name="address" type="text">
+                    <div class="error"></div>
+                </div>
+
+
+                <div class="input-control">
+                    <label for="services">Services</label>
+                    <select id="Service-type" name="Service-type">
+                        <option value="Select Services">Select Services</option>
+                        <option >Fullstack Development</option>
+                        <option >Cyber Security</option>
+                        <option >End-device Installation</option>
+                        <option >Networking</option>
+                    </select>
+                    <div class="error"></div>
+                </div>
+                
+                
+                <div class="input-control">
+                    <label for="check-in">Booking Date:</label>
+                    <input type="date" id="check-in" name="check-in" >
+                    <div class="error"></div>
+                </div>
+                
+                
+                <div class="input-control">
+                    <label for="check-in">Due Date:</label>
+                    <input type="date" id="check-out" name="check-out" >
+                    <div class="error"></div>
+                </div>
+                <button type="submit">Book</button>
+            </form>
+    
+           
+    </div>
+    <script>
+        //cross origiin request
+        document.getElementById('book').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            const formData = new FormData(this);
+            fetch('https://formspree.io/f/moqopyyb', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Booking submitted successfully!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error in booking your service. Please try again later.');
+            });
+        });
+            </script>
+          
+    </body>
+    <div class="footer">
+        <footer id="footer"> Versatile Programmers &copy; 2023 | Powered by CapaCiTi
+           </footer>
+        </div>
+    
+</html>

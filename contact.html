@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <title>INDEX </title>
+        <script defer src="activePage.js"></script>
+        <link rel="stylesheet" href="contactPage.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+       
+    </head>
+    <body class="register">
+        <header class="navigation">
+            <div class="nav-container">
+              <div class="brand">
+                <img src="LOGO.png" alt="">
+              </div>
+              <nav>
+                <div class="nav-mobile">
+                  <i class="bx bx-menu"></i>
+                  </div>
+                <ul class="nav-list">
+                  <li>
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li>
+                    <a href="#!">About</a>
+                    <ul class="nav-dropdown">
+                      <li>
+                        <a href="about.html">About VPs</a>
+                      </li>
+                      <li>
+                        <a href="Team.html">Meet the team</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="services.html">Services</a>
+                  </li>
+                  <li>
+                    <a href="#!">Events</a>
+                    <ul class="nav-dropdown">
+                      <li>
+                        <a href="Events.html">Our Events</a>
+                      </li>
+                      <li>
+                        <a href="http://localhost:3000">Our Game</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="contact.html">Contact</a>
+                  </li>
+                  <div class="mobile-close"><i class='bx bx-x'></i></div>
+                </ul>
+                <input type="text" id="search" placeholder="Search..." onkeyup="search()">
+
+        <div id="searchResults"></div>
+              </nav>
+            </div>
+        </header>
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="left">
+            
+                    <h1>Contact Us</h1>
+            
+                    <div class="formbox" id="contact">
+                        <form id="contactform">
+                            <input name="name" id="name" type="text" class="short" placeholder="Name" onfocus="this.placeholder=''" onblur="this.placeholder='Name'" required/>
+                            <input name="email" id = "email" type="text" class="short" placeholder="Email" onfocus="this.placeholder=''" onblur="this.placeholder='Email'" required/>
+                            <input name="subject" id="subject" type="text" class="feedback-input" placeholder="Subject" onfocus="this.placeholder=''" onblur="this.placeholder='Subject'" required/>
+                            <textarea name="text" id="text" class="feedback-input" placeholder="Message" onfocus="this.placeholder=''" onblur="this.placeholder='Message'" required></textarea>
+                            <button type="submit" value="SEND">submit</button>
+                        </form>
+            
+                       
+            
+                    </div>
+            
+                    </div>
+            
+                </div>
+            
+                <div id="right">
+                    <div id="map">
+            
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.3017348930707!2d18.458079011479242!3d-33.933366722294515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5d08518ba1b9%3A0x1398e85e424f762!2s97%20Durham%20Ave%2C%20Salt%20River%2C%20Cape%20Town%2C%207925!5e0!3m2!1sen!2sza!4v1696232554531!5m2!1sen!2sza" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!--This is for c.J illu....--->
+
+            <!---<div class="Overlay">
+
+                <a href="https://www.linkedin.com/in/tshepisomotshele/"><img src="C.J.png" alt=""></a>
+
+                <span id="trick-lick"></span>
+
+            </div>--->
+            </div>
+            <script>
+                //cross origiin request
+                document.getElementById('contactform').addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting the traditional way
+                    const formData = new FormData(this);
+                    fetch('https://formspree.io/f/xdorpypz', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        alert('Form submitted successfully!');
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting the form. Please try again later.');
+                    });
+                });
+                    </script> 
+            
+            
+   
+
+    
+         
+        </body>
+        <div class="footer">
+            <footer id="footer"> Versatile Programmers &copy; 2023 | Powered by CapaCiTi
+               </footer>
+            </div> 
+        
+        </html>
